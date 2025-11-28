@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FastStart AI</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastStart AI - English Seekhna Ab Aasan</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,329 +12,373 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-
-        .page {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 60px 30px 80px 30px;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-        }
-
-        .page.active {
-            opacity: 1;
-            z-index: 10;
-        }
-
-        .page-1 {
+            overflow: hidden;
+            height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        .page-2 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .page-3 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .page-4 {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-
-        .content {
-            text-align: center;
-            color: white;
-            animation: slideUp 0.8s ease-out;
+        .slide {
+            position: absolute;
             width: 100%;
-            max-width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            padding: 20px;
         }
 
-        @keyframes slideUp {
+        .slide.active {
+            opacity: 1;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
             from {
-                transform: translateY(30px);
+                transform: scale(0.9);
                 opacity: 0;
             }
             to {
-                transform: translateY(0);
+                transform: scale(1);
                 opacity: 1;
             }
         }
 
-        .logo {
-            font-size: 42px;
-            font-weight: bold;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        /* Slide 1 - Problem Statement */
+        .slide-1 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
-        .main-text {
-            font-size: 28px;
-            font-weight: 600;
-            line-height: 1.5;
-            margin-bottom: 25px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-            padding: 0 10px;
+        .problem-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .hindi-text {
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .emoji-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .problem-text {
             font-size: 22px;
-            font-style: italic;
-            opacity: 0.95;
-            margin-top: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            line-height: 1.6;
+            text-align: center;
         }
 
         .highlight {
-            background: rgba(255,255,255,0.25);
-            padding: 5px 12px;
-            border-radius: 8px;
-            display: inline-block;
-            margin: 3px;
+            color: #f5576c;
+            font-weight: 700;
         }
 
-        .cta-box {
-            background: rgba(255,255,255,0.95);
-            color: #333;
-            padding: 35px 25px;
-            border-radius: 20px;
-            margin-top: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            width: 90%;
+        /* Slide 2 - Solution */
+        .slide-2 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .solution-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             max-width: 500px;
+            text-align: center;
         }
 
-        .url {
-            font-size: 38px;
-            font-weight: bold;
-            color: #667eea;
-            margin: 25px 0;
+        .solution-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 25px;
+            animation: pulse 2s infinite;
         }
 
-        .subscribe-section {
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(102, 126, 234, 0.9);
-            border-radius: 15px;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .subscribe-text {
-            color: #ffffff !important;
-            font-size: 26px !important;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        .video-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        .emoji {
-            font-size: 48px;
-            margin: 25px 0;
+        .video-container:hover {
+            transform: scale(1.05);
         }
 
-        .progress-bar {
+        .video-thumbnail {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulsePlay 1.5s infinite;
+        }
+
+        @keyframes pulsePlay {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+
+        .watch-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #4facfe;
+        }
+
+        /* Slide 3 - CTA */
+        .slide-3 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .cta-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .cta-emoji {
+            font-size: 70px;
+            margin-bottom: 20px;
+            animation: rotate 3s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        .cta-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .brand-name {
+            font-size: 40px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.5)); }
+            50% { filter: drop-shadow(0 0 15px rgba(102, 126, 234, 0.8)); }
+        }
+
+        .website-link {
+            font-size: 24px;
+            font-weight: 700;
+            color: #f5576c;
+            text-decoration: none;
+            padding: 15px 30px;
+            background: white;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .website-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Progress bar */
+        .progress-bar-container {
             position: fixed;
-            bottom: 0;
-            left: 0;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
             height: 6px;
-            background: rgba(255,255,255,0.9);
-            width: 0%;
-            transition: width 0.1s linear;
-            z-index: 100;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 1000;
         }
 
-        /* Mobile specific fixes */
+        .progress-bar-fill {
+            height: 100%;
+            background: white;
+            border-radius: 10px;
+            animation: progressBar 5s linear;
+        }
+
+        @keyframes progressBar {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        /* Mobile optimizations */
         @media (max-width: 768px) {
-            .page {
-                padding: 80px 25px 100px 25px;
+            .problem-text {
+                font-size: 18px;
             }
 
-            .logo {
-                font-size: 36px;
-                margin-bottom: 35px;
-            }
-
-            .main-text {
+            .solution-title {
                 font-size: 24px;
-                line-height: 1.4;
-                margin-bottom: 20px;
             }
 
-            .hindi-text {
+            .brand-name {
+                font-size: 32px;
+            }
+
+            .website-link {
                 font-size: 20px;
             }
 
-            .url {
-                font-size: 32px;
+            .emoji-icon {
+                font-size: 50px;
             }
 
-            .emoji {
-                font-size: 42px;
-                margin: 20px 0;
-            }
-
-            .cta-box {
-                padding: 30px 20px;
-                width: 92%;
-            }
-
-            .subscribe-text {
-                font-size: 24px !important;
-            }
-        }
-
-        /* Extra small phones */
-        @media (max-height: 700px) {
-            .page {
-                padding: 60px 20px 80px 20px;
-            }
-
-            .logo {
-                font-size: 32px;
-                margin-bottom: 25px;
-            }
-
-            .main-text {
-                font-size: 22px;
-                margin-bottom: 15px;
-            }
-
-            .emoji {
-                font-size: 36px;
-                margin: 15px 0;
+            .cta-emoji {
+                font-size: 60px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Slide 1: Problem -->
+    <div class="slide slide-1 active" id="slide1">
+        <div class="problem-card">
+            <div class="emoji-icon">😰📚</div>
+            <p class="problem-text">
+                क्या आप भी <span class="highlight">vocabulary</span> और <span class="highlight">grammar</span> भूल जाते हैं?<br><br>
+                क्या आपको भी बार-बार <span class="highlight">revision</span> करना पड़ता है?<br><br>
+                <span class="highlight">Conversation</span> के बीच में words याद नहीं आते? 🤔
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Solution -->
+    <div class="slide slide-2" id="slide2">
+        <div class="solution-card">
+            <h2 class="solution-title">✨ इस समस्या का समाधान ✨</h2>
+            <div class="video-container" onclick="openVideo()">
+                <img src="https://img.youtube.com/vi/sc5f-pZciaY/maxresdefault.jpg" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="play-button">
+                    <div class="play-icon"></div>
+                </div>
+            </div>
+            <p class="watch-text">👆 इस Video को देखें और सब कुछ सीखें!</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: CTA -->
+    <div class="slide slide-3" id="slide3">
+        <div class="cta-card">
+            <div class="cta-emoji">🎯🚀</div>
+            <h2 class="cta-title">English बोलना सीखना चाहते हैं?</h2>
+            <div class="brand-name">FastStart AI</div>
+            <a href="https://faststart.in" class="website-link" target="_blank">
+                faststart.in 🌟
+            </a>
+            <p style="margin-top: 20px; font-size: 18px; color: #2d3748; font-weight: 600;">
+                👍 Like करें और शुरू करें अपना English Journey!
+            </p>
+        </div>
+    </div>
+
     <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
-
-    <!-- Page 1 -->
-    <div class="page page-1 active" id="page1">
-        <div class="content">
-            <div class="logo">✨ FastStart AI</div>
-            <div class="main-text">
-                FastStart AI is an <span class="highlight">AI-powered</span> language learning platform where you learn English speaking <span class="highlight">bina bore hue</span>
-            </div>
-            <div class="main-text">
-                Your learning journey will be <span class="highlight">interesting and fast!</span>
-            </div>
-            <div class="emoji">🚀📚🎯</div>
-        </div>
-    </div>
-
-    <!-- Page 2 -->
-    <div class="page page-2" id="page2">
-        <div class="content">
-            <div class="logo">💡 Bilkul Alag!</div>
-            <div class="main-text">
-                This is NOT like other English speaking learning platforms
-            </div>
-            <div class="main-text">
-                This is a <span class="highlight">personalized learning app</span> for <span class="highlight">each individual</span>
-            </div>
-           
-            <div class="emoji">👤✨🎯</div>
-        </div>
-    </div>
-
-    <!-- Page 3 -->
-    <div class="page page-3" id="page3">
-        <div class="content">
-            <div class="logo">🎯 Take Action!</div>
-            <div class="main-text">
-                If you want to speak in English...
-            </div>
-            <div class="main-text">
-                Then <span class="highlight">zaroor</span> give yourself <span class="highlight">ek mauka</span>
-            </div>
-            <div class="main-text">
-                Use this platform to speak English fluently!
-            </div>
-            <div class="emoji">💪🗣️🌟</div>
-        </div>
-    </div>
-
-    <!-- Page 4 -->
-    <div class="page page-4" id="page4">
-        <div class="content">
-            <div class="cta-box">
-                <div class="emoji">🎥👍</div>
-                <div class="main-text" style="color: #333;">
-                    Like the video!
-                </div>
-               
-                <!-- SUBSCRIBE SECTION END -->
-                <div class="url">
-                    faststart.in
-                </div>
-                <div style="font-size: 18px; color: #666; margin-top: 15px;">
-                    Start your English learning journey today! 🚀
-                </div>
-            </div>
-        </div>
+    <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progressBar"></div>
     </div>
 
     <script>
-        let currentPage = 1;
-        const totalPages = 4;
-        const pageDuration = 5000; // 5 seconds
-        let startTime = Date.now();
+        let currentSlide = 1;
+        const totalSlides = 3;
+        const slideDuration = 5000; // 5 seconds
 
-        function updateProgressBar() {
-            const elapsed = Date.now() - startTime;
-            const progress = (elapsed / pageDuration) * 100;
-            document.getElementById('progressBar').style.width = Math.min(progress, 100) + '%';
-            
-            if (elapsed < pageDuration) {
-                requestAnimationFrame(updateProgressBar);
-            }
-        }
-
-        function showPage(pageNumber) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
+        function showSlide(slideNumber) {
+            // Hide all slides
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
             });
-            
-            // Show current page
-            document.getElementById('page' + pageNumber).classList.add('active');
-            
-            // Reset and start progress bar
-            startTime = Date.now();
-            document.getElementById('progressBar').style.width = '0%';
-            updateProgressBar();
+
+            // Show current slide
+            document.getElementById('slide' + slideNumber).classList.add('active');
+
+            // Reset and animate progress bar
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.animation = 'none';
+            setTimeout(() => {
+                progressBar.style.animation = 'progressBar 5s linear';
+            }, 10);
         }
 
-        function nextPage() {
-            currentPage++;
-            if (currentPage > totalPages) {
-                currentPage = 1; // Loop back to first page
+        function nextSlide() {
+            currentSlide++;
+            if (currentSlide > totalSlides) {
+                currentSlide = 1; // Loop back to first slide
             }
-            showPage(currentPage);
+            showSlide(currentSlide);
         }
 
-        // Start the slideshow
-        showPage(1);
-        setInterval(nextPage, pageDuration);
+        function openVideo() {
+            window.open('https://youtu.be/sc5f-pZciaY?si=dez8hNTMg5z5QcNk', '_blank');
+        }
+
+        // Auto advance slides
+        setInterval(nextSlide, slideDuration);
+
+        // Initialize
+        showSlide(1);
     </script>
 </body>
 </html>
