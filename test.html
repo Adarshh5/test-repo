@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastStart AI - English Seekhna Ab Aasan</title>
+    <title>Perfect 40-Minute Daily Routine</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         * {
@@ -14,121 +14,106 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
             height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
             padding: 20px;
+            overflow: hidden;
         }
 
-        .slide.active {
-            opacity: 1;
-            animation: slideIn 0.8s ease-out;
+        .main-container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 35px 25px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInScale 0.8s ease-out;
         }
 
-        @keyframes slideIn {
+        @keyframes fadeInScale {
             from {
+                opacity: 0;
                 transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .main-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #2d3748;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
                 opacity: 0;
             }
             to {
-                transform: scale(1);
                 opacity: 1;
             }
         }
 
-        /* Slide 1 - Problem Statement */
-        .slide-1 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .problem-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .emoji-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .problem-text {
-            font-size: 22px;
-            font-weight: 600;
-            color: #2d3748;
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        .highlight {
-            color: #f5576c;
-            font-weight: 700;
-        }
-
-        /* Slide 2 - Solution */
-        .slide-2 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .solution-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            text-align: center;
-        }
-
-        .solution-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 25px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .video-container {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .video-container:hover {
-            transform: scale(1.05);
+        .video-wrapper:hover {
+            transform: scale(1.03);
         }
 
         .video-thumbnail {
@@ -137,248 +122,200 @@
             display: block;
         }
 
-        .play-button {
+        .play-overlay {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 0, 0, 0.9);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 0, 0, 0.95);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: pulsePlay 1.5s infinite;
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+            animation: playPulse 1.8s ease-in-out infinite;
         }
 
-        @keyframes pulsePlay {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
+        @keyframes playPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 10px 35px rgba(255, 0, 0, 0.6);
+            }
         }
 
         .play-icon {
             width: 0;
             height: 0;
-            border-left: 20px solid white;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            margin-left: 5px;
+            border-left: 24px solid white;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            margin-left: 6px;
         }
 
         .watch-text {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            color: #4facfe;
+            color: #667eea;
+            margin-top: 20px;
+            animation: bounce 2s ease-in-out infinite;
         }
 
-        /* Slide 3 - CTA */
-        .slide-3 {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
-        .cta-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            text-align: center;
+        .emoji {
+            font-size: 22px;
+            margin: 0 5px;
         }
 
-        .cta-emoji {
-            font-size: 70px;
-            margin-bottom: 20px;
-            animation: rotate 3s ease-in-out infinite;
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.15;
+            animation: float 4s ease-in-out infinite;
         }
 
-        @keyframes rotate {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(15deg); }
+        .decoration-1 {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
         }
 
-        .cta-title {
-            font-size: 26px;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 20px;
+        .decoration-2 {
+            top: 15%;
+            right: 10%;
+            animation-delay: 1s;
         }
 
-        .brand-name {
-            font-size: 40px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 20px 0;
-            animation: glow 2s ease-in-out infinite;
+        .decoration-3 {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 2s;
         }
 
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.5)); }
-            50% { filter: drop-shadow(0 0 15px rgba(102, 126, 234, 0.8)); }
+        .decoration-4 {
+            bottom: 10%;
+            right: 15%;
+            animation-delay: 1.5s;
         }
 
-        .website-link {
-            font-size: 24px;
-            font-weight: 700;
-            color: #f5576c;
-            text-decoration: none;
-            padding: 15px 30px;
-            background: white;
-            border-radius: 50px;
-            display: inline-block;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            margin-top: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .website-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Progress bar */
-        .progress-bar-container {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            overflow: hidden;
-            z-index: 1000;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background: white;
-            border-radius: 10px;
-            animation: progressBar 5s linear;
-        }
-
-        @keyframes progressBar {
-            from { width: 0%; }
-            to { width: 100%; }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
         }
 
         /* Mobile optimizations */
         @media (max-width: 768px) {
-            .problem-text {
-                font-size: 18px;
+            .main-container {
+                padding: 30px 20px;
             }
 
-            .solution-title {
+            .main-title {
+                font-size: 22px;
+            }
+
+            .time-badge {
+                font-size: 16px;
+                padding: 8px 20px;
+            }
+
+            .play-btn {
+                width: 70px;
+                height: 70px;
+            }
+
+            .play-icon {
+                border-left: 20px solid white;
+                border-top: 12px solid transparent;
+                border-bottom: 12px solid transparent;
+            }
+
+            .watch-text {
+                font-size: 14px;
+            }
+
+            .decoration {
                 font-size: 24px;
             }
+        }
 
-            .brand-name {
-                font-size: 32px;
-            }
-
-            .website-link {
+        @media (max-width: 400px) {
+            .main-title {
                 font-size: 20px;
             }
 
-            .emoji-icon {
-                font-size: 50px;
-            }
-
-            .cta-emoji {
-                font-size: 60px;
+            .time-badge {
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Slide 1: Problem -->
-    <div class="slide slide-1 active" id="slide1">
-        <div class="problem-card">
-            <div class="emoji-icon">😰📚</div>
-            <p class="problem-text">
-                क्या आप भी <span class="highlight">vocabulary</span> और <span class="highlight">grammar</span> भूल जाते हैं?<br><br>
-                क्या आपको भी बार-बार <span class="highlight">revision</span> करना पड़ता है?<br><br>
-                <span class="highlight">Conversation</span> के बीच में words याद नहीं आते? 🤔
-            </p>
-        </div>
-    </div>
+    <!-- Decorative floating elements -->
+    <div class="decoration decoration-1">📚</div>
+    <div class="decoration decoration-2">🎯</div>
+    <div class="decoration decoration-3">⭐</div>
+    <div class="decoration decoration-4">🚀</div>
 
-    <!-- Slide 2: Solution -->
-    <div class="slide slide-2" id="slide2">
-        <div class="solution-card">
-            <h2 class="solution-title">✨ इस समस्या का समाधान ✨</h2>
-            <div class="video-container" onclick="openVideo()">
-                <img src="https://img.youtube.com/vi/sc5f-pZciaY/maxresdefault.jpg" alt="Video Thumbnail" class="video-thumbnail">
-                <div class="play-button">
+    <div class="main-container">
+        <div class="time-badge">
+            ⏰ केवल 40 मिनट
+        </div>
+
+        <h1 class="main-title">
+            <span class="highlight">Perfect 40-Minute</span><br>
+            Daily Routine to<br>
+            <span class="highlight">Speak English Fluently</span>
+        </h1>
+
+        <div class="video-wrapper" onclick="openVideo()">
+            <img src="https://img.youtube.com/vi/oWfcEJd5K_4/maxresdefault.jpg" 
+                 alt="40-Minute Daily Routine Video" 
+                 class="video-thumbnail"
+                 onerror="this.src='https://img.youtube.com/vi/oWfcEJd5K_4/hqdefault.jpg'">
+            <div class="play-overlay">
+                <div class="play-btn">
                     <div class="play-icon"></div>
                 </div>
             </div>
-            <p class="watch-text">👆 इस Video को देखें और सब कुछ सीखें!</p>
         </div>
-    </div>
 
-    <!-- Slide 3: CTA -->
-    <div class="slide slide-3" id="slide3">
-        <div class="cta-card">
-            <div class="cta-emoji">🎯🚀</div>
-            <h2 class="cta-title">English बोलना सीखना चाहते हैं?</h2>
-            <div class="brand-name">FastStart AI</div>
-            <a href="https://faststart.in" class="website-link" target="_blank">
-                faststart.in 🌟
-            </a>
-            <p style="margin-top: 20px; font-size: 18px; color: #2d3748; font-weight: 600;">
-                👍 Like करें और शुरू करें अपना English Journey!
-            </p>
-        </div>
-    </div>
-
-    <!-- Progress Bar -->
-    <div class="progress-bar-container">
-        <div class="progress-bar-fill" id="progressBar"></div>
+        <p class="watch-text">
+            <span class="emoji">👆</span>
+            Watch करें और Fluent बनें
+            <span class="emoji">🔥</span>
+        </p>
     </div>
 
     <script>
-        let currentSlide = 1;
-        const totalSlides = 3;
-        const slideDuration = 5000; // 5 seconds
-
-        function showSlide(slideNumber) {
-            // Hide all slides
-            document.querySelectorAll('.slide').forEach(slide => {
-                slide.classList.remove('active');
-            });
-
-            // Show current slide
-            document.getElementById('slide' + slideNumber).classList.add('active');
-
-            // Reset and animate progress bar
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.animation = 'none';
-            setTimeout(() => {
-                progressBar.style.animation = 'progressBar 5s linear';
-            }, 10);
-        }
-
-        function nextSlide() {
-            currentSlide++;
-            if (currentSlide > totalSlides) {
-                currentSlide = 1; // Loop back to first slide
-            }
-            showSlide(currentSlide);
-        }
-
         function openVideo() {
-            window.open('https://youtu.be/sc5f-pZciaY?si=dez8hNTMg5z5QcNk', '_blank');
+            window.open('https://youtu.be/oWfcEJd5K_4?si=r6HLDlS6K2r0B9Jd', '_blank');
         }
-
-        // Auto advance slides
-        setInterval(nextSlide, slideDuration);
-
-        // Initialize
-        showSlide(1);
     </script>
 </body>
 </html>
