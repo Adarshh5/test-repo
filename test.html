@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spoken English Vocabulary - FastStart AI</title>
+    <title>English Speaking Fear - FastStart AI</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         * {
@@ -15,66 +15,142 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
-            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             overflow: hidden;
+            position: relative;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Animated stars background */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
         }
 
-        .content-card {
-            background: rgba(255, 255, 255, 0.97);
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .content-wrapper {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
             border-radius: 35px;
             padding: 40px 30px;
-            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 90px rgba(138, 43, 226, 0.6), 0 0 50px rgba(255, 255, 255, 0.2);
             max-width: 480px;
             width: 100%;
             text-align: center;
-            animation: popIn 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: floatIn 1s ease-out;
+            border: 3px solid rgba(138, 43, 226, 0.3);
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .fear-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #8a2be2, #9b59b6);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.5);
+            animation: shake 3s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+            20%, 40%, 60%, 80% { transform: translateX(3px); }
+        }
+
+        .main-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1a1a2e;
+            line-height: 1.3;
+            margin-bottom: 25px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fear-emoji {
+            font-size: 55px;
+            animation: nervous 2s ease-in-out infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes nervous {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-10deg) scale(1.1); }
+            75% { transform: rotate(10deg) scale(1.1); }
+        }
+
+        .highlight-danger {
+            background: linear-gradient(120deg, #ff6b6b, #ee5a6f);
+            padding: 3px 10px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 900;
+        }
+
+        .secrets-box {
+            background: linear-gradient(135deg, #fff3cd, #ffe69c);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin: 25px 0;
+            border: 3px solid #ffc107;
+            animation: zoomIn 1.2s ease-out;
             position: relative;
             overflow: hidden;
         }
 
-        @keyframes popIn {
-            0% {
-                transform: scale(0.5) rotate(-5deg);
+        @keyframes zoomIn {
+            from {
                 opacity: 0;
+                transform: scale(0.8);
             }
-            100% {
-                transform: scale(1) rotate(0deg);
+            to {
                 opacity: 1;
+                transform: scale(1);
             }
         }
 
-        /* Decorative corner elements */
-        .corner-decoration {
+        .secrets-box::before {
+            content: "🔒";
             position: absolute;
-            width: 100px;
-            height: 100px;
+            top: -10px;
+            right: -10px;
+            font-size: 80px;
             opacity: 0.1;
-        }
-
-        .corner-top-left {
-            top: -20px;
-            left: -20px;
-            background: radial-gradient(circle, #ff6b6b, transparent);
-            animation: rotate 10s linear infinite;
-        }
-
-        .corner-bottom-right {
-            bottom: -20px;
-            right: -20px;
-            background: radial-gradient(circle, #48dbfb, transparent);
-            animation: rotate 10s linear infinite reverse;
+            animation: rotate 8s linear infinite;
         }
 
         @keyframes rotate {
@@ -82,111 +158,24 @@
             to { transform: rotate(360deg); }
         }
 
-        .vocab-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
-            animation: wiggle 3s ease-in-out infinite;
-        }
-
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-3deg); }
-            75% { transform: rotate(3deg); }
-        }
-
-        .main-question {
-            font-size: 26px;
-            font-weight: 800;
-            color: #2c3e50;
-            line-height: 1.4;
-            margin-bottom: 30px;
-            animation: slideDown 1s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .problem-highlight {
-            background: linear-gradient(120deg, #feca57, #ff9ff3);
-            padding: 3px 8px;
-            border-radius: 8px;
-            font-weight: 900;
-            color: #2c3e50;
-        }
-
-        .features-box {
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-            border-radius: 20px;
-            padding: 25px 20px;
-            margin: 25px 0;
-            border: 3px dashed #4caf50;
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .features-title {
+        .secrets-title {
             font-size: 20px;
             font-weight: 700;
-            color: #2e7d32;
+            color: #856404;
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
         }
 
-        .features-text {
-            font-size: 17px;
-            color: #1b5e20;
+        .secrets-list {
+            font-size: 16px;
+            color: #664d03;
             font-weight: 600;
-            line-height: 1.6;
+            line-height: 1.8;
+            text-align: left;
+            padding-left: 20px;
         }
 
-        .vocab-icon {
-            font-size: 50px;
-            animation: spin 4s linear infinite;
-            margin: 20px 0;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.2); }
-            to { transform: rotate(360deg) scale(1); }
-        }
-
-        .video-thumbnail-wrapper {
-            position: relative;
-            border-radius: 25px;
-            overflow: hidden;
+        .video-link-section {
             margin: 30px 0;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-            cursor: pointer;
-            transition: all 0.4s ease;
             animation: fadeIn 1.4s ease-out;
         }
 
@@ -195,270 +184,290 @@
             to { opacity: 1; }
         }
 
-        .video-thumbnail-wrapper:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .video-thumb {
-            width: 100%;
-            height: auto;
+        .watch-video-btn {
             display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #8a2be2, #9b59b6);
+            color: white;
+            padding: 18px;
+            border-radius: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .play-overlay-wrapper {
+        .watch-video-btn::before {
+            content: "";
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.25);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
         }
 
-        .play-button-custom {
-            width: 85px;
-            height: 85px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6);
-            animation: heartbeat 1.3s ease-in-out infinite;
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
         }
 
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            25% {
-                transform: scale(1.1);
-            }
-            50% {
-                transform: scale(1);
-            }
-            75% {
-                transform: scale(1.15);
-            }
+        .watch-video-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.7);
+            color: white;
         }
 
-        .play-triangle {
-            width: 0;
-            height: 0;
-            border-left: 25px solid white;
-            border-top: 16px solid transparent;
-            border-bottom: 16px solid transparent;
-            margin-left: 7px;
+        .arrow-icon {
+            display: inline-block;
+            animation: bounce 1.5s ease-in-out infinite;
         }
 
-        .reveal-text {
-            font-size: 19px;
-            font-weight: 700;
-            color: #ff6b6b;
-            margin: 20px 0;
-            animation: blink 2.5s ease-in-out infinite;
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
+        .action-section {
+            background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin: 25px 0;
+            border: 3px dashed #5e35b1;
+            animation: slideInRight 1.6s ease-out;
         }
 
-        .cta-section {
-            margin-top: 35px;
-            padding-top: 25px;
-            border-top: 3px dashed #48dbfb;
-            animation: slideUp 1.6s ease-out;
-        }
-
-        @keyframes slideUp {
+        @keyframes slideInRight {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateX(30px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateX(0);
             }
         }
 
-        .cta-title {
-            font-size: 20px;
+        .action-title {
+            font-size: 19px;
             font-weight: 700;
-            color: #2c3e50;
+            color: #311b92;
             margin-bottom: 15px;
         }
 
-        .brand-logo {
+        .like-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        .like-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 107, 107, 0.6);
+            color: white;
+        }
+
+        .like-icon {
+            font-size: 22px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+        }
+
+        .cta-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 3px solid #8a2be2;
+        }
+
+        .brand-title {
             font-size: 38px;
             font-weight: 900;
-            background: linear-gradient(135deg, #ff6b6b, #48dbfb, #feca57);
+            background: linear-gradient(135deg, #8a2be2, #9b59b6, #da70d6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin: 15px 0;
             letter-spacing: 1px;
-            animation: rainbow 3s ease-in-out infinite;
+            animation: glow 2.5s ease-in-out infinite;
         }
 
-        @keyframes rainbow {
+        @keyframes glow {
             0%, 100% {
-                filter: hue-rotate(0deg) drop-shadow(0 0 8px rgba(255, 107, 107, 0.5));
+                filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5));
             }
             50% {
-                filter: hue-rotate(30deg) drop-shadow(0 0 15px rgba(72, 219, 251, 0.7));
+                filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.9));
             }
         }
 
-        .website-link-custom {
+        .website-link {
             display: inline-block;
-            background: linear-gradient(135deg, #48dbfb, #0abde3);
-            color: white;
+            background: white;
+            color: #8a2be2;
             padding: 14px 35px;
             border-radius: 50px;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             text-decoration: none;
-            box-shadow: 0 8px 20px rgba(72, 219, 251, 0.4);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
             transition: all 0.3s ease;
-            margin-top: 12px;
+            margin-top: 10px;
+            border: 3px solid #8a2be2;
         }
 
-        .website-link-custom:hover {
+        .website-link:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(72, 219, 251, 0.6);
-            color: white;
+            box-shadow: 0 12px 30px rgba(138, 43, 226, 0.5);
+            color: #9b59b6;
+            background: #f8f9fa;
         }
 
-        .emoji-large {
-            font-size: 24px;
-            margin: 0 5px;
+        .emoji {
+            font-size: 22px;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .content-card {
+            .content-wrapper {
                 padding: 35px 25px;
             }
 
-            .main-question {
-                font-size: 22px;
+            .main-title {
+                font-size: 24px;
             }
 
-            .vocab-badge {
-                font-size: 15px;
+            .fear-badge {
+                font-size: 14px;
                 padding: 10px 24px;
             }
 
-            .features-title {
+            .secrets-title {
                 font-size: 18px;
             }
 
-            .features-text {
-                font-size: 15px;
+            .secrets-list {
+                font-size: 14px;
             }
 
-            .brand-logo {
+            .watch-video-btn {
+                font-size: 18px;
+                padding: 16px;
+            }
+
+            .brand-title {
                 font-size: 32px;
             }
 
-            .website-link-custom {
-                font-size: 18px;
+            .website-link {
+                font-size: 20px;
                 padding: 12px 30px;
             }
 
-            .play-button-custom {
-                width: 75px;
-                height: 75px;
+            .like-btn {
+                font-size: 16px;
+                padding: 10px 20px;
             }
 
-            .play-triangle {
-                border-left: 22px solid white;
-                border-top: 14px solid transparent;
-                border-bottom: 14px solid transparent;
-            }
-
-            .vocab-icon {
-                font-size: 40px;
+            .fear-emoji {
+                font-size: 45px;
             }
         }
 
         @media (max-width: 400px) {
-            .main-question {
-                font-size: 20px;
+            .main-title {
+                font-size: 22px;
             }
 
-            .brand-logo {
+            .brand-title {
                 font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="content-card">
-        <!-- Corner decorations -->
-        <div class="corner-decoration corner-top-left"></div>
-        <div class="corner-decoration corner-bottom-right"></div>
+    <!-- Animated stars -->
+    <script>
+        for(let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(star);
+        }
+    </script>
 
-        <div class="vocab-badge">
-            📚 SPOKEN VOCABULARY
+    <div class="content-wrapper">
+        <div class="fear-badge">
+            😰 SPEAKING FEAR
         </div>
 
-        <h1 class="main-question">
-            <span class="problem-highlight">Spoken English Vocabulary</span> ढूंढ रहे हैं? 🔍
+        <h1 class="main-title">
+            क्या आप भी <span class="highlight-danger">English बोलते समय Nervous</span> हो जाते हैं?
         </h1>
 
-        <div class="vocab-icon">💬✨</div>
+        <div class="fear-emoji">😨💭</div>
 
-        <div class="features-box">
-            <div class="features-title">
-                <span class="emoji-large">🎯</span>
-                <span>FastStart AI में मिलेगा</span>
+        <div class="secrets-box">
+            <div class="secrets-title">
+                🤫 Video में मिलेंगे ये Secrets
             </div>
-            <p class="features-text">
-                ✓ <strong>Indian Context</strong> में Real Vocabulary<br>
-                ✓ जो words <strong>India में सबसे ज्यादा</strong> use होते हैं<br>
-                ✓ <strong>Fast सीखें</strong> और <strong>याद रखें</strong> आसानी से
-            </p>
-        </div>
-
-        <!-- Video Section -->
-        <div class="video-thumbnail-wrapper" onclick="openYouTubeVideo()">
-            <img src="https://img.youtube.com/vi/9UukjrSr7HY/maxresdefault.jpg" 
-                 alt="Spoken Vocabulary Learning" 
-                 class="video-thumb"
-                 onerror="this.src='https://img.youtube.com/vi/9UukjrSr7HY/hqdefault.jpg'">
-            <div class="play-overlay-wrapper">
-                <div class="play-button-custom">
-                    <div class="play-triangle"></div>
-                </div>
+            <div class="secrets-list">
+                ❓ Fear क्यों होता है और क्या है असली reason<br>
+                🔐 वो secrets जो fear को खत्म कर देंगे<br>
+                ⚡ कौन सी चीजें fear को बढ़ाती हैं<br>
+                ✅ Speaking शुरू करने से पहले क्या करें
             </div>
         </div>
 
-        <p class="reveal-text">
-            👆 Video देखें और जानें पूरा Method! 🚀
-        </p>
+        <!-- Video Link Section -->
+        <div class="video-link-section">
+            <a href="https://youtu.be/9UukjrSr7HY?si=pKQlducJrQ8lPviP" class="watch-video-btn" target="_blank">
+                🎥 पूरा Video देखें YouTube पर <span class="arrow-icon">→</span>
+            </a>
+        </div>
+
+        <!-- Action Section -->
+        <div class="action-section">
+            <div class="action-title">
+                <span class="emoji">👇</span> Video पसंद आए तो
+            </div>
+            <a href="#" class="like-btn" onclick="alert('Please watch the video on YouTube and hit the LIKE button! 👍'); return false;">
+                <span class="like-icon">❤️</span> Like करें
+            </a>
+        </div>
 
         <!-- CTA Section -->
         <div class="cta-section">
-            <p class="cta-title">
-                <span class="emoji-large">🗣️</span>
-                Spoken English के लिए Best Platform!
+            <p style="font-size: 19px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px;">
+                🚀 बिना डर के English बोलना सीखें!
             </p>
-            <div class="brand-logo">FastStart AI</div>
-            <a href="https://faststart.in" class="website-link-custom" target="_blank">
+            <div class="brand-title">FastStart AI</div>
+            <a href="https://faststart.in" class="website-link" target="_blank">
                 🌐 faststart.in
             </a>
         </div>
     </div>
-
-    <script>
-        function openYouTubeVideo() {
-            window.open('https://youtu.be/9UukjrSr7HY?si=pKQlducJrQ8lPviP', '_blank');
-        }
-    </script>
 </body>
 </html>
